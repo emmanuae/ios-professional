@@ -12,6 +12,7 @@
 		A085DC9528AABB4400D805DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A085DC9428AABB4400D805DB /* Assets.xcassets */; };
 		A085DC9828AABB4400D805DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A085DC9628AABB4400D805DB /* LaunchScreen.storyboard */; };
 		A085DCA228AABC4B00D805DB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085DCA128AABC4B00D805DB /* LoginView.swift */; };
+		A085DCC728AB9CC500D805DB /* OBCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085DCC628AB9CC500D805DB /* OBCViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A085DC9728AABB4400D805DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A085DC9928AABB4400D805DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A085DCA128AABC4B00D805DB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A085DCC628AB9CC500D805DB /* OBCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBCViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		A085DC8A28AABB4300D805DB /* Bankey */ = {
 			isa = PBXGroup;
 			children = (
+				A085DCC528AB9C9000D805DB /* Onboarding */,
 				A085DC9F28AABC0F00D805DB /* files */,
 				A085DCA028AABC2500D805DB /* Login */,
 				A085DC8B28AABB4300D805DB /* AppDelegate.swift */,
@@ -78,6 +81,14 @@
 				A085DCA128AABC4B00D805DB /* LoginView.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		A085DCC528AB9C9000D805DB /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				A085DCC628AB9CC500D805DB /* OBCViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A085DCA228AABC4B00D805DB /* LoginView.swift in Sources */,
+				A085DCC728AB9CC500D805DB /* OBCViewController.swift in Sources */,
 				A085DC9028AABB4300D805DB /* LoginViewController.swift in Sources */,
 				A085DC8C28AABB4300D805DB /* AppDelegate.swift in Sources */,
 			);
