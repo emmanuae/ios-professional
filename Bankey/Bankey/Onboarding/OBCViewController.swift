@@ -8,16 +8,30 @@
 import Foundation
 import UIKit
 
+protocol ObcViewControllerDelecate:AnyObject {
+    func didFinishOnboarding()
+}
 
 class ObcViewController: UIViewController {
     
     let pageViewController:UIPageViewController
     var pages = [UIViewController]()
+    
+    weak var delegate:ObcViewControllerDelecate?
+    
     var currentVC:UIViewController {
-        didSet {
-            
+        didSet{
+            guard let index = pages.firstIndex(of: currentVC) else { return }
+            nextButton.isHidden = index == pages.count - 1
+            backButton.isHidden = index == 0
+            doneButton.isHidden = !(index == pages.count - 1)
         }
     }
+    
+    let closeButton = UIButton(type: .system)
+    let nextButton = UIButton(type: .system)
+    let backButton = UIButton(type: .system)
+    let doneButton = UIButton(type: .system)
     
     override init(nibName nibNameOrNil:String?,bundle nibBundleOrNil:Bundle?){
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -37,8 +51,16 @@ class ObcViewController: UIViewController {
     required init?(coder:NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setup()
+        style()
+        layout()
+    }
+    
+    private func setup(){
         view.backgroundColor = .systemPurple
         
         addChild(pageViewController)
@@ -56,6 +78,54 @@ class ObcViewController: UIViewController {
         ])
         pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil)
         currentVC = pages.first!
+        
+    }
+    private func style(){
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.setTitle("Next", for: [])
+        nextButton.addTarget(self, action: #selector(nextTapped), for: .primaryActionTriggered)
+        
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.setTitle("Back", for: [])
+        backButton.addTarget(self, action: #selector(backTapped), for: .primaryActionTriggered)
+        
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        doneButton.setTitle("Done", for: [])
+        doneButton.addTarget(self, action: #selector(doneTapped), for: .primaryActionTriggered)
+        
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.setTitle("Close", for: [])
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .primaryActionTriggered)
+        
+     
+        
+    }
+    private func layout(){
+        view.addSubview(nextButton)
+        view.addSubview(backButton)
+        view.addSubview(doneButton)
+        view.addSubview(closeButton)
+        //next
+        NSLayoutConstraint.activate([
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: nextButton.trailingAnchor, multiplier: 2),
+            view.bottomAnchor.constraint(equalToSystemSpacingBelow: nextButton.bottomAnchor, multiplier: 4)
+        ])
+        //back
+        NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            view.bottomAnchor.constraint(equalToSystemSpacingBelow: backButton.bottomAnchor, multiplier: 4)
+        ])
+        //done
+        NSLayoutConstraint.activate([
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: doneButton.trailingAnchor, multiplier: 2),
+            view.bottomAnchor.constraint(equalToSystemSpacingBelow: doneButton.bottomAnchor, multiplier: 4)
+        ])
+    
+        //close
+        NSLayoutConstraint.activate([
+            closeButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            closeButton.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2)
+        ])
     }
 }
 //Mark: - UIPageViewControllerDataSource
@@ -86,6 +156,28 @@ extension ObcViewController:UIPageViewControllerDataSource {
         return pages.firstIndex(of: self.currentVC) ?? 0
     }
 }
+
+//Mark: - Action
+extension ObcViewController {
+    @objc func nextTapped(_ sender: UIButton) {
+        guard let nextVC = getNextViewController(from: currentVC) else { return }
+        pageViewController.setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
+    }
+    @objc func backTapped(_ sender:UIButton) {
+        guard let previousVC = getPreviousViewController(from: currentVC) else { return }
+        pageViewController.setViewControllers([previousVC], direction: .reverse, animated: true, completion: nil)
+    }
+    @objc func doneTapped(_ selder:UIButton) {
+        //TODO
+        delegate?.didFinishOnboarding()
+    }
+    
+    @objc func closeTapped(_ sender: UIButton) {
+        //TODO
+        delegate?.didFinishOnboarding()
+    }
+}
+
 //Mark: - ViewControllers
 //class ViewController1:UIViewController {
 //    override func viewDidLoad() {

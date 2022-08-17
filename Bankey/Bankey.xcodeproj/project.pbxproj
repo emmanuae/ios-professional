@@ -14,6 +14,8 @@
 		A085DCA228AABC4B00D805DB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085DCA128AABC4B00D805DB /* LoginView.swift */; };
 		A085DCC728AB9CC500D805DB /* OBCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085DCC628AB9CC500D805DB /* OBCViewController.swift */; };
 		A085DCC928ABB8C900D805DB /* OndoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085DCC828ABB8C900D805DB /* OndoardingViewController.swift */; };
+		A085DCCB28ACF54400D805DB /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085DCCA28ACF54400D805DB /* DummyViewController.swift */; };
+		A085DCCE28AD133B00D805DB /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085DCCD28AD133B00D805DB /* LocalState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		A085DCA128AABC4B00D805DB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A085DCC628AB9CC500D805DB /* OBCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBCViewController.swift; sourceTree = "<group>"; };
 		A085DCC828ABB8C900D805DB /* OndoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OndoardingViewController.swift; sourceTree = "<group>"; };
+		A085DCCA28ACF54400D805DB /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
+		A085DCCD28AD133B00D805DB /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		A085DC8A28AABB4300D805DB /* Bankey */ = {
 			isa = PBXGroup;
 			children = (
+				A085DCCC28AD132600D805DB /* Utils */,
 				A085DCC528AB9C9000D805DB /* Onboarding */,
 				A085DCA028AABC2500D805DB /* Login */,
 				A085DC8B28AABB4300D805DB /* AppDelegate.swift */,
@@ -81,6 +86,7 @@
 			children = (
 				A085DC8F28AABB4300D805DB /* LoginViewController.swift */,
 				A085DCA128AABC4B00D805DB /* LoginView.swift */,
+				A085DCCA28ACF54400D805DB /* DummyViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -92,6 +98,14 @@
 				A085DCC828ABB8C900D805DB /* OndoardingViewController.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		A085DCCC28AD132600D805DB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A085DCCD28AD133B00D805DB /* LocalState.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A085DCA228AABC4B00D805DB /* LoginView.swift in Sources */,
+				A085DCCE28AD133B00D805DB /* LocalState.swift in Sources */,
+				A085DCCB28ACF54400D805DB /* DummyViewController.swift in Sources */,
 				A085DCC728AB9CC500D805DB /* OBCViewController.swift in Sources */,
 				A085DCC928ABB8C900D805DB /* OndoardingViewController.swift in Sources */,
 				A085DC9028AABB4300D805DB /* LoginViewController.swift in Sources */,
