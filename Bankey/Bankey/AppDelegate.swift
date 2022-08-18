@@ -7,6 +7,8 @@
 
 import UIKit
 
+let appColor:UIColor = .systemTeal
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let loginViewController = LoginViewController()
     let obcViewController = ObcViewController()
     let dummyViewController = DummyViewController()
-  
+    let mainViewController = MainViewController()
+    
     func application(_ application: UIApplication,didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
@@ -25,9 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         obcViewController.delegate = self
         dummyViewController.logoutDelegate = self
         
-        window?.rootViewController = loginViewController
+        window?.rootViewController = mainViewController
    
-        
+        mainViewController.selectedIndex = 0
         return true
     }
 
